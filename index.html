@@ -24,18 +24,21 @@
 
 <script type="text/javascript">
 
-var words = ["loser", "bigly", "yuuuuge", "shlonged", "fired", "tremendous", "lightweight"];
+var words = ["loser", "bigly", "yuuuuge", "shlonged", "fired", "tremendous", "lightweight", "pocahontas"];
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var win = 0;
 var loss = 0;
 var remain = 10;
 
+//function gameStart() {
+
 var chosen = words[Math.floor(Math.random()*words.length)];
+//}
 var guessed = [];
 var blanks = [];
 var correct = [];
+var match = [];
 // console.log(chosen);
-//var split = chosen.split("");
 var inPlay = chosen.split('').join('');
 var answer = inPlay.toUpperCase().split('').join('');
 
@@ -56,11 +59,15 @@ var wordArea = document.getElementById("word");
 	//var blanksStr = (inPlay.join(" "));
 	for (i=0; i < inPlay.length; i++){
 		blanks.push("_ ");
+		match.push("_ ");
 		
 	}
 //var spaces = blanks.join('');
 wordArea.innerHTML = blanks.join("");
 
+for (var i=0; i<match.length; i++){
+	match.splice(i, 1, [answer[i]]);
+}
 
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
@@ -81,8 +88,10 @@ document.onkeyup = function(event) {
 	 				}
 
 				}
-	 		
-	 		
+	 		console.log(blanks);
+	 		//alert(answer);
+	 		console.log(match);
+	 		//console.log(blanks.length);
 	 		// console.log(inPlay);
 	 		// console.log(answer);
 	 		// console.log(guessed);
@@ -93,58 +102,60 @@ document.onkeyup = function(event) {
 	 		// 	win++
 	 		//}
 	 		// console.log(correct);
-	 			for (i=0; i < (blanks.length); i++){
-	 				if (blanks == "Array[1]".repeat(i)) {
+	 		//for (i=0; i < (blanks.length); i++){
+	 		if (blanks == match) {
 	 				win++
-	 				}	
-	 			}
+	 				}			
+	 			//}
 	 		}
-
+	 
 
 	 		else {
 	 		guessed.push(userGuess + ' ');
 	 		remain = remain - 1;
 
+
 // var image = document.createElementById('img');
 
-	// if (guessed.length = 0) {
-	// 	document.getElementById('pic').src= 'assets/images/trump0.gif';
-	// }
-	// if (guessed.length = 1) {
-	// 	document.getElementById('pic').src= 'assets/images/trump1.gif';
-	// }
-	// if (guessed.length = 2) {
-	// 	document.getElementById('pic').src= 'assets/images/trump2.gif';
-	// }
-	// if (guessed.length = 3) {
-	// 	document.getElementById('pic').src= 'assets/images/trump3.gif';
-	// }
-	// if (guessed.length = 4) {
-	// 	document.getElementById('pic').src= 'assets/images/trump4.gif';
-	// }
-	// if (guessed.length = 5) {
-	// 	document.getElementById('pic').src= 'assets/images/trump5.gif';
-	// }
-	// if (guessed.length = 6) {
-	// 	document.getElementById('pic').src= 'assets/images/trump6.gif';
-	// }
-	// if (guessed.length = 7) {
-	// 	document.getElementById('pic').src= 'assets/images/trump7.gif';
-	// }
-	// if (guessed.length = 8) {
-	// 	document.getElementById('pic').src= 'assets/images/trump8.gif';
-	// }
-	// if (guessed.length = 9) {
-	// 	document.getElementById('pic').src= 'assets/images/trump9.gif';
-	// }
-	// if (guessed.length = 10) {
-	// 	document.getElementById('pic').src= 'assets/images/trump10.gif';
+	if (guessed.length == 0) {
+		document.getElementById('pic').src= 'assets/images/trump0.gif';
+	}
+	if (guessed.length == 1) {
+		document.getElementById('pic').src= 'assets/images/trump1.gif';
+	}
+	if (guessed.length == 2) {
+		document.getElementById('pic').src= 'assets/images/trump2.gif';
+	}
+	if (guessed.length == 3) {
+		document.getElementById('pic').src= 'assets/images/trump3.gif';
+	}
+	if (guessed.length == 4) {
+		document.getElementById('pic').src= 'assets/images/trump4.gif';
+	}
+	if (guessed.length == 5) {
+		document.getElementById('pic').src= 'assets/images/trump5.gif';
+	}
+	if (guessed.length == 6) {
+		document.getElementById('pic').src= 'assets/images/trump6.gif';
+	}
+	if (guessed.length == 7) {
+		document.getElementById('pic').src= 'assets/images/trump7.gif';
+	}
+	if (guessed.length == 8) {
+		document.getElementById('pic').src= 'assets/images/trump8.gif';
+	}
+	if (guessed.length == 9) {
+		document.getElementById('pic').src= 'assets/images/trump9.gif';
+	}
+	// if (guessed.length == 10) {
+		
 	// }
 
 
 	 		if (remain < 1) {
+	 			document.getElementById('pic').src= 'assets/images/trump10.gif';
 	 		 	loss++;
-	 		 	alert("YOU ARE A LOSER! CLICK TO PLAY AGAIN.");
+	 		 	//alert("YOU ARE A LOSER! CLICK TO PLAY AGAIN.");
 
 	 //console.log(guessed)
 	 
