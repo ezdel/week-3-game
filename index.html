@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<header>
+		<h1 id=title>STUMP TRUMP</h1>
+		<h3 id=instruct>Try to figure out the word before Trump becomes President.<br> Guess any letter to begin.</h4>
+	</header>
+	<div id=word>
+		<div id=letters>
+		</div>
+		<div id=spaces>
+		</div>
+	</div>
+	<div id=stats>
+	</div>
+	<div id=picture>
+	</div>
+
+
+<script type="text/javascript">
+
+var words = ["loser", "bigly", "yuuuuge", "shlonged", "fired", "tremendous", "lightweight"];
+var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var win = 0;
+var loss = 0;
+var remain = 10;
+
+var chosen = words[Math.floor(Math.random()*words.length)];
+var guessed = [];
+var blanks = [];
+var correct = [];
+// console.log(chosen);
+//var split = chosen.split("");
+var inPlay = chosen.split('').join('');
+var answer = inPlay.toUpperCase().split('').join('');
+
+// console.log(inPlay);
+// console.log(inPlay.length);
+// console.log(guessed);
+// console.log(answer);
+
+
+var output = document.getElementById("stats");
+var outputStr = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed + "</p>";
+output.innerHTML = outputStr;
+
+var wordArea = document.getElementById("word");
+
+
+
+	//var blanksStr = (inPlay.join(" "));
+	for (i=0; i < inPlay.length; i++){
+		blanks.push("_ ");
+		
+	}
+//var spaces = blanks.join('');
+wordArea.innerHTML = blanks.join("");
+
+
+document.onkeyup = function(event) {
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	if (alphabet.indexOf(userGuess) < 0) {
+		return;
+
+	}
+	else {
+		var choice = chosen.indexOf(userGuess);
+	 		if (choice > -1) {
+	 			// correct.push(userGuess);
+	 			for (var i=0; i < inPlay.length; i++){
+	 				if (inPlay[i] == userGuess) {
+
+	 					blanks.splice(i, 1, [answer[i]]);
+	 				}
+
+				}
+	 		
+	 		
+	 		// console.log(inPlay);
+	 		// console.log(answer);
+	 		// console.log(guessed);
+	 		// console.log(blanks);
+	 		//console.log(alphabet);
+	 		// correct.push(userGuess);
+	 		// if (unique.length = correct.length){
+	 		// 	win++
+	 		//}
+	 		// console.log(correct);
+	 		for (i=0; i < (blanks.length); i++){
+	 		if (blanks == "Array[1]".repeat(i)) {
+	 				win++
+	 			}
+	 		}
+	 		}
+
+
+	 		else {
+	 		guessed.push(userGuess + ' ');
+	 		remain = remain - 1;
+
+// var image = document.createElementById('img');
+
+// 	if (guessed.length = 0) {
+// 		var imagePhase = '<img src='assets/images/trump0.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 1) {
+// 		var imagePhase = '<img src='assets/images/trump1.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 2) {
+// 		var imagePhase = '<img src='assets/images/trump2.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 3) {
+// 		var imagePhase = '<img src='assets/images/trump3.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 4) {
+// 		var imagePhase = '<img src='assets/images/trump4.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 5) {
+// 		var imagePhase = '<img src='assets/images/trump5.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 6) {
+// 		var imagePhase = '<img src='assets/images/trump6.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 7) {
+// 		var imagePhase = '<img src='assets/images/trump7.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 8) {
+// 		var imagePhase = '<img src='assets/images/trump8.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 9) {
+// 		var imagePhase = '<img src='assets/images/trump9.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+// 	if (guessed.length = 10) {
+// 		var imagePhase = '<img src='assets/images/trump10.gif'>';
+// 		image.innerHTML=imagePhase;
+// 	}
+
+
+	 		if (remain < 1) {
+	 		 	loss++;
+	 		 	alert("YOU ARE A LOSER! CLICK TO PLAY AGAIN.");
+
+	 //console.log(guessed)
+	 
+
+
+	 		}
+	 		
+
+	 			// if (guessed.length > 1){
+	 			// guessed.split('');
+	 			// }
+
+
+	 		//alphabet.splice(userGuess);
+	 		console.log("sorry");
+	 		console.log(inPlay);
+	 		console.log(guessed);
+	 		//console.log(alphabet);
+	 		}
+
+
+var wordArea = document.getElementById("word");
+
+
+
+	//var blanksStr = (inPlay.join(" "));
+	// for (i=0; i < inPlay.length; i++){
+	// 	blanks.push("_ ");
+		
+	//}
+//var spaces = blanks.join('');
+wordArea.innerHTML = blanks.join("");	 	
+	}
+
+var output = document.getElementById("stats");
+var outputStr = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed.join('').toUpperCase() + "</p>";
+output.innerHTML = outputStr;
+
+
+  
+// var pictureArea = document.getElementById("picture");
+	
+	// if (guessed.length = 0) {
+	// 	var image = "<img src="assets/images/trump0.gif">";
+	// }
+	
+		
+	
+// pictureArea.innerHTML = image;
+}
+
+</script>
+</body>
+</html>

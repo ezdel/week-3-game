@@ -1,0 +1,38 @@
+#word {
+	font-size: 24px;
+	line-height: 36px;
+	letter-spacing: 6px;
+	}
+
+body {
+	background-image: url("../images/potusbackdrop.jpg");
+	width: 100%;
+}
+
+#title {
+	font-size: 64px;
+	line-height: 80px;
+	text-align: center;
+	color: red;
+	text-shadow: 2px 2px yellow;
+}
+
+#instruct, #word, #stats {
+	width: 50%;
+	margin-left: 50px;
+	color: yellow;
+	text-shadow: 1px 1px red;
+	float: left;
+	position: relative;
+	
+}
+
+#picture {
+	width: 30%;
+	float: left;
+	position: relative;
+	margin-top: -70px;
+
+	
+
+}
