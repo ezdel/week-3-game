@@ -18,6 +18,7 @@
 	<div id=stats>
 	</div>
 	<div id=picture>
+		<img id=pic src='assets/images/trump0.gif'>
 	</div>
 
 
@@ -63,11 +64,13 @@ wordArea.innerHTML = blanks.join("");
 
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-	if (alphabet.indexOf(userGuess) < 0) {
+	var a = alphabet.indexOf(userGuess);
+	if ( a < 0) {
 		return;
 
 	}
 	else {
+		alphabet.splice(a, 1);
 		var choice = chosen.indexOf(userGuess);
 	 		if (choice > -1) {
 	 			// correct.push(userGuess);
@@ -90,11 +93,11 @@ document.onkeyup = function(event) {
 	 		// 	win++
 	 		//}
 	 		// console.log(correct);
-	 		for (i=0; i < (blanks.length); i++){
-	 		if (blanks == "Array[1]".repeat(i)) {
+	 			for (i=0; i < (blanks.length); i++){
+	 				if (blanks == "Array[1]".repeat(i)) {
 	 				win++
+	 				}	
 	 			}
-	 		}
 	 		}
 
 
@@ -104,50 +107,39 @@ document.onkeyup = function(event) {
 
 // var image = document.createElementById('img');
 
-// 	if (guessed.length = 0) {
-// 		var imagePhase = '<img src='assets/images/trump0.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 1) {
-// 		var imagePhase = '<img src='assets/images/trump1.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 2) {
-// 		var imagePhase = '<img src='assets/images/trump2.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 3) {
-// 		var imagePhase = '<img src='assets/images/trump3.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 4) {
-// 		var imagePhase = '<img src='assets/images/trump4.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 5) {
-// 		var imagePhase = '<img src='assets/images/trump5.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 6) {
-// 		var imagePhase = '<img src='assets/images/trump6.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 7) {
-// 		var imagePhase = '<img src='assets/images/trump7.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 8) {
-// 		var imagePhase = '<img src='assets/images/trump8.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 9) {
-// 		var imagePhase = '<img src='assets/images/trump9.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
-// 	if (guessed.length = 10) {
-// 		var imagePhase = '<img src='assets/images/trump10.gif'>';
-// 		image.innerHTML=imagePhase;
-// 	}
+	// if (guessed.length = 0) {
+	// 	document.getElementById('pic').src= 'assets/images/trump0.gif';
+	// }
+	// if (guessed.length = 1) {
+	// 	document.getElementById('pic').src= 'assets/images/trump1.gif';
+	// }
+	// if (guessed.length = 2) {
+	// 	document.getElementById('pic').src= 'assets/images/trump2.gif';
+	// }
+	// if (guessed.length = 3) {
+	// 	document.getElementById('pic').src= 'assets/images/trump3.gif';
+	// }
+	// if (guessed.length = 4) {
+	// 	document.getElementById('pic').src= 'assets/images/trump4.gif';
+	// }
+	// if (guessed.length = 5) {
+	// 	document.getElementById('pic').src= 'assets/images/trump5.gif';
+	// }
+	// if (guessed.length = 6) {
+	// 	document.getElementById('pic').src= 'assets/images/trump6.gif';
+	// }
+	// if (guessed.length = 7) {
+	// 	document.getElementById('pic').src= 'assets/images/trump7.gif';
+	// }
+	// if (guessed.length = 8) {
+	// 	document.getElementById('pic').src= 'assets/images/trump8.gif';
+	// }
+	// if (guessed.length = 9) {
+	// 	document.getElementById('pic').src= 'assets/images/trump9.gif';
+	// }
+	// if (guessed.length = 10) {
+	// 	document.getElementById('pic').src= 'assets/images/trump10.gif';
+	// }
 
 
 	 		if (remain < 1) {
@@ -167,9 +159,9 @@ document.onkeyup = function(event) {
 
 
 	 		//alphabet.splice(userGuess);
-	 		console.log("sorry");
-	 		console.log(inPlay);
-	 		console.log(guessed);
+	 		// console.log("sorry");
+	 		// console.log(inPlay);
+	 		// console.log(guessed);
 	 		//console.log(alphabet);
 	 		}
 
@@ -202,8 +194,8 @@ output.innerHTML = outputStr;
 		
 	
 // pictureArea.innerHTML = image;
-}
 
+}
 </script>
 </body>
 </html>
