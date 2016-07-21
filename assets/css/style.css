@@ -10,6 +10,7 @@ body {
 }
 
 #title {
+	font-family: 'Copperplate Gothic Bold', Times New Roman, serif; 
 	font-size: 64px;
 	line-height: 80px;
 	text-align: center;
@@ -24,14 +25,34 @@ body {
 	text-shadow: 1px 1px red;
 	float: left;
 	position: relative;
-	
+}
+#word {
+	width: 50%;
+	margin-left: 50px;
+	color: red;
+	text-shadow: 1px 1px yellow;
+	float: left;
+	position: relative;
+	font-size: 30px;
+	line-height: 60px;
+}
+
+#instruct {
+	font-size: 24px;
+	line-height: 48px;
+}
+
+#stats {
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 30px;
 }
 
 #picture {
 	width: 30%;
 	float: left;
 	position: relative;
-	margin-top: -140px;
+	margin-top: -90px;
 	margin-left: -20px;
 
 	
