@@ -1,141 +1,77 @@
 var words = ["loser", "bigly", "yuuuuge", "shlonged", "fired", "tremendous", "lightweight", "pocahontas", "ivanka", "melania", "crooked", "classy", "moron"];
-var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var alphabet = [];
 var win = 0;
 var loss = 0;
 var remain = 10;
 var chosen
-var inPlay
 var answer
-var wordArea
 var guessed = [];
 var blanks = [];
 var correct = [];
 var match = [];
-var unique
-var check
-
+var gameOver = true;
 
 function gameStart() {
-remain = 10;
-guessed = [];
-blanks = [];
-match = [];
-correct = [];
-unique = "";
-check = "";
+	gameOver = false;
+	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	remain = 10;
+	guessed = [];
+	blanks = [];
+	match = [];
+	correct = [];
 
-chosen = words[Math.floor(Math.random()*words.length)];
-inPlay = chosen.split('').join('');
-answer = inPlay.toUpperCase().split('').join('');
-wordArea = document.getElementById("word");
+	chosen = words[Math.floor(Math.random()*words.length)];
+	answer = chosen.toUpperCase();
 
-
-	for (i=0; i < inPlay.length; i++){
+	for (i=0; i < chosen.length; i++){
 		blanks.push("_ ");
-		match.push("_ ");
+		match.splice(i, 1, [answer[i]]);
 		
 	}
-
-wordArea.innerHTML = blanks.join("");
-for (var i=0; i<match.length; i++){
-	match.splice(i, 1, [answer[i]]);
-}
-
+	document.getElementById("word").innerHTML = blanks.join('');
+	words.splice(words.indexOf(chosen), 1);
+	document.getElementById('restartContainer').style.display = 'none';
+	document.getElementById('pic').src= 'assets/images/trump0.gif';
+	document.getElementById('loseSong').pause();
+	document.getElementById('winSong').pause();
+	document.getElementById('loseSong').currentTime=2;
+	document.getElementById('winSong').currentTime=0;
+	document.getElementById('stats').innerHTML = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed + "</p>";
 }
 gameStart();
 
-var remove = words.indexOf(chosen);
-words.splice(remove, 1);
-
-var output = document.getElementById("stats");
-var outputStr = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed + "</p>";
-output.innerHTML = outputStr;
-
-unique = chosen.replace(/[^\w\s]|(.)(?=\1)/gi);
-
-
 document.onkeyup = function(event) {
+	if (gameOver) return;
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-	var a = alphabet.indexOf(userGuess);
-	if ( a < 0) {
-		return;
+	var userGuessIndex = alphabet.indexOf(userGuess);
+	if (userGuessIndex < 0) return;
+	alphabet.splice(userGuessIndex, 1);
+	if (chosen.indexOf(userGuess) > -1) {
+	 	correct.push(userGuess);
+	 	for (var i = 0; i < chosen.length; i++) {
+	 		if (chosen[i] == userGuess) blanks.splice(i, 1, [answer[i]]);
+	 	}
+	 	if (blanks.indexOf('_ ') < 0) {
+	 		gameOver = true;
+	 		win++;
+	 		document.getElementById('restart').innerHTML = "<p>You defeated Trump!</p><p>Click to Play Again.</p>"
+	 		document.getElementById('winSong').play().currentTime=0;
+	 		document.getElementById('restartContainer').style.display = 'block';
+	 	} 				 
 	}
-
 	else {
-		alphabet.splice(a, 1);
-		var choice = chosen.indexOf(userGuess);
-	 		if (choice > -1) {
-	 			correct.push(userGuess);
-	 			for (var i=0; i < inPlay.length; i++){
-	 				if (inPlay[i] == userGuess) {
-
-	 					blanks.splice(i, 1, [answer[i]]);
-	 				}
-	 				check = unique.replace(/[^\w\s]|(.)(?=\1)/gi);
-				}
-	 		
-	 		 if (check.length === correct.length) {
-	 		 		win++;
-	 		 		gameStart();
-	 		 		}			
-	 			
-	 		}
-	 
-
-	 		else {
-	 		guessed.push(userGuess + ' ');
-	 		remain = remain - 1;
-
-
-	if (guessed.length == 0) {
-		document.getElementById('pic').src= 'assets/images/trump0.gif';
-	}
-	if (guessed.length == 1) {
-		document.getElementById('pic').src= 'assets/images/trump1.gif';
-	}
-	if (guessed.length == 2) {
-		document.getElementById('pic').src= 'assets/images/trump2.gif';
-	}
-	if (guessed.length == 3) {
-		document.getElementById('pic').src= 'assets/images/trump3.gif';
-	}
-	if (guessed.length == 4) {
-		document.getElementById('pic').src= 'assets/images/trump4.gif';
-	}
-	if (guessed.length == 5) {
-		document.getElementById('pic').src= 'assets/images/trump5.gif';
-	}
-	if (guessed.length == 6) {
-		document.getElementById('pic').src= 'assets/images/trump6.gif';
-	}
-	if (guessed.length == 7) {
-		document.getElementById('pic').src= 'assets/images/trump7.gif';
-	}
-	if (guessed.length == 8) {
-		document.getElementById('pic').src= 'assets/images/trump8.gif';
-	}
-	if (guessed.length == 9) {
-		document.getElementById('pic').src= 'assets/images/trump9.gif';
-	}
-	 if (guessed.length == 10) {
-		document.getElementById('pic').src= 'assets/images/trump10.gif';
-		document.getElementById('song').play();
-	 	loss++;
-	 	gameStart();
+	 	remain--;
+	 	guessed.push(userGuess + ' ');
+		document.getElementById('pic').src= 'assets/images/trump' + guessed.length + '.gif';
+		if (remain == 0) {
+			gameOver = true;
+			loss++;
+			document.getElementById('loseSong').play().currentTime=2;
+			document.getElementById('restart').innerHTML = "<p>You're a loser!</p><p>Click to Play Again.</p>"
+	 		document.getElementById('restartContainer').style.display = 'block';
+		}	
 	}
 
-	 		}
-
-var wordArea = document.getElementById("word");
-
-
-
-	
-wordArea.innerHTML = blanks.join("");	 	
-	}
-
-var output = document.getElementById("stats");
-var outputStr = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed.join('').toUpperCase() + "</p>";
-output.innerHTML = outputStr;
-
+	document.getElementById("word").innerHTML = blanks.join('');
+	document.getElementById("stats").innerHTML = "<p>WINS</p>" + "<p>" + win + "</p>" + "<p>LOSSES</p>" + "<p>" + loss + "</p>" + "<p>GUESSES LEFT</p>" + "<p>" + remain + "</p>" + "<p>LETTERS GUESSED</p>" + "<p>" + guessed.join('').toUpperCase() + "</p>";
 }

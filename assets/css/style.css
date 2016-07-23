@@ -54,7 +54,22 @@ body {
 	position: relative;
 	margin-top: -90px;
 	margin-left: -20px;
+}
 
-	
+#restartContainer {
+	position: relative;
+	clear: both;
+	width: 200px;
+	height: 60px;
+	margin: auto;
+	display: none;
+}
+
+#restart {
+	font-size: 16px;
+	width: 200px;
+	height: 60px;
+	color: yellow;
+	background-color: red;
 
 }

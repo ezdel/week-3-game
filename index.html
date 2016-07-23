@@ -4,7 +4,8 @@
 	<title>Hangman Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<audio id="song" src="assets/audio/hail.mp3"></audio>
+	<audio id="winSong" src="assets/audio/hail.mp3"></audio>
+	<audio id="loseSong" src="assets/audio/TRUMP_REMIX.mp3"></audio>
 </head>
 <body>
 	<header>
@@ -12,15 +13,14 @@
 		<h3 id=instruct>Try to figure out the word before Trump becomes President.<br> Guess any letter to begin.</h4>
 	</header>
 	<div id=word>
-		<div id=letters>
-		</div>
-		<div id=spaces>
-		</div>
+	</div>
 	</div>
 	<div id=stats>
 	</div>
 	<div id=picture>
 		<img id=pic src='assets/images/trump0.gif'>
+	</div>
+	<div id="restartContainer"><button id="restart" onclick="gameStart();"></button>
 	</div>
 
 
